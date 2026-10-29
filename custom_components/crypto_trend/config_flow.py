@@ -25,6 +25,7 @@ from .const import (
     DEFAULT_CURRENCY,
     DEFAULT_SCAN_INTERVAL,
     DOMAIN,
+    NAME,
     MAX_SCAN_INTERVAL,
     MIN_SCAN_INTERVAL,
     TOP_COINS,
@@ -154,7 +155,7 @@ class CryptoConfigFlow(ConfigFlow, domain=DOMAIN):
                     errors["base"] = "no_coins"
                 else:
                     return self.async_create_entry(
-                        title=f"Crypto {self._currency.upper()}",
+                        title=f"{NAME} {self._currency.upper()}",
                         data={CONF_CURRENCY: self._currency, CONF_API_KEY: self._api_key},
                         options={CONF_COINS: coins, CONF_SCAN_INTERVAL: DEFAULT_SCAN_INTERVAL},
                     )

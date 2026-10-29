@@ -2,7 +2,7 @@ from __future__ import annotations
 from datetime import timedelta
 
 DOMAIN = "crypto_trend"
-NAME = "Crypto Trend"
+NAME = "MMOUi Crypto"
 ATTRIBUTION = "Data provided by CoinGecko"
 
 CONF_API_KEY = "api_key"

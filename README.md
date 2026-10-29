@@ -1,10 +1,10 @@
-# Crypto Trend per Home Assistant
+# MMOUi Crypto per Home Assistant
 
 Integrazione HACS per seguire **prezzo e andamento delle criptovalute**: variazioni a 1 ora, 24 ore, 7 e 30 giorni, tendenza, massimi e minimi, distanza dal massimo storico e capitalizzazione, con i dati di [CoinGecko](https://www.coingecko.com). Non serve nessuna chiave API.
 
 ## Configurazione
 
-**Impostazioni → Dispositivi e servizi → Aggiungi integrazione → Crypto Trend**
+**Impostazioni → Dispositivi e servizi → Aggiungi integrazione → MMOUi Crypto**
 
 1. Scegli la valuta dei prezzi (`eur`, `usd`, `chf`, … anche `btc`) e, se vuoi, una chiave **Demo** gratuita di CoinGecko (alza il limite di richieste).
 2. Scegli le criptovalute: l'elenco propone le 100 più grandi, le altre si scrivono con l'ID CoinGecko (es. `pepe`, `render-token`) o con il simbolo (es. `doge`; se più monete usano lo stesso simbolo vince quella con capitalizzazione maggiore).
@@ -41,8 +41,8 @@ Per installarla: **Impostazioni → Dashboard → Aggiungi dashboard → Nuova d
 ### HACS
 
 1. HACS → menu ⋮ → **Repository personalizzati** → aggiungi `https://github.com/mattiaouiapp/HomeAssistant_HACS_Crypto`, categoria **Integrazione**.
-2. Installa **Crypto Trend** e riavvia Home Assistant.
-3. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione → Crypto Trend**.
+2. Installa **MMOUi Crypto** e riavvia Home Assistant.
+3. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione → MMOUi Crypto**.
 
 (Facoltativo) Crea una release, ad esempio `v1.0.0`: HACS mostra le release come versioni installabili.
 

@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Crypto Trend",
+        "title": "MMOUi Crypto",
         "description": "Prezzi e andamento delle criptovalute da CoinGecko. Aggiungi una voce per ogni valuta. La chiave non serve; una chiave Demo gratuita di CoinGecko alza il limite di richieste.",
         "data": {
           "currency": "Valuta",
@@ -45,7 +45,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "Crypto Trend",
+        "title": "MMOUi Crypto",
         "data": {
           "coins": "Criptovalute",
           "scan_interval": "Intervallo di aggiornamento",
