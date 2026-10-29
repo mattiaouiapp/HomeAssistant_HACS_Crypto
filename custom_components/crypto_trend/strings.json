@@ -1,0 +1,118 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Crypto Trend",
+        "description": "Prices and trends of cryptocurrencies from CoinGecko. Add one entry per currency. No key is needed; a free CoinGecko Demo key raises the rate limit.",
+        "data": {
+          "currency": "Currency",
+          "api_key": "CoinGecko Demo API key"
+        },
+        "data_description": {
+          "currency": "Currency prices are shown in (eur, usd, ...).",
+          "api_key": "Optional. Leave empty to use the public API."
+        }
+      },
+      "coins": {
+        "title": "Coins",
+        "description": "Pick the coins to follow, or type their CoinGecko ID (e.g. `bitcoin`) or ticker (e.g. `btc`).",
+        "data": {
+          "coins": "Coins"
+        },
+        "data_description": {
+          "coins": "The 100 largest coins are listed; any other can be typed in."
+        }
+      },
+      "reauth_confirm": {
+        "title": "CoinGecko key rejected",
+        "description": "CoinGecko no longer accepts the configured API key. Enter a new Demo key, or leave empty for the public API.",
+        "data": {
+          "api_key": "CoinGecko Demo API key"
+        }
+      }
+    },
+    "error": {
+      "invalid_api_key": "CoinGecko rejected this API key (only Demo keys are supported).",
+      "cannot_connect": "Could not reach CoinGecko, or the currency is not supported.",
+      "unknown_coins": "Unknown coins: {unknown}.",
+      "no_coins": "Pick at least one coin."
+    },
+    "abort": {
+      "already_configured": "This currency is already configured.",
+      "reauth_successful": "The API key was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Crypto Trend",
+        "data": {
+          "coins": "Coins",
+          "scan_interval": "Update interval",
+          "api_key": "CoinGecko Demo API key"
+        },
+        "data_description": {
+          "coins": "The 100 largest coins are listed; any other can be typed in.",
+          "scan_interval": "Minutes between updates. Without a key keep it at 2 or more.",
+          "api_key": "Optional. Leave empty to use the public API."
+        }
+      }
+    },
+    "error": {
+      "invalid_api_key": "CoinGecko rejected this API key (only Demo keys are supported).",
+      "cannot_connect": "Could not reach CoinGecko, or the currency is not supported.",
+      "unknown_coins": "Unknown coins: {unknown}.",
+      "no_coins": "Pick at least one coin."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "price": {
+        "name": "Price"
+      },
+      "change_1h": {
+        "name": "Change 1h"
+      },
+      "change_24h": {
+        "name": "Change 24h"
+      },
+      "change_7d": {
+        "name": "Change 7d"
+      },
+      "change_30d": {
+        "name": "Change 30d"
+      },
+      "change_1y": {
+        "name": "Change 1y"
+      },
+      "trend": {
+        "name": "Trend",
+        "state": {
+          "strong_up": "Strong rise",
+          "up": "Rising",
+          "stable": "Stable",
+          "down": "Falling",
+          "strong_down": "Strong fall"
+        }
+      },
+      "high_24h": {
+        "name": "High 24h"
+      },
+      "low_24h": {
+        "name": "Low 24h"
+      },
+      "ath_distance": {
+        "name": "Distance from all-time high"
+      },
+      "market_cap": {
+        "name": "Market cap"
+      },
+      "volume_24h": {
+        "name": "Volume 24h"
+      },
+      "rank": {
+        "name": "Market cap rank"
+      }
+    }
+  }
+}

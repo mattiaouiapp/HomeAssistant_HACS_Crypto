@@ -1,0 +1,118 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Crypto Trend",
+        "description": "Prezzi e andamento delle criptovalute da CoinGecko. Aggiungi una voce per ogni valuta. La chiave non serve; una chiave Demo gratuita di CoinGecko alza il limite di richieste.",
+        "data": {
+          "currency": "Valuta",
+          "api_key": "Chiave API Demo di CoinGecko"
+        },
+        "data_description": {
+          "currency": "Valuta in cui mostrare i prezzi (eur, usd, ...).",
+          "api_key": "Facoltativa. Lascia vuoto per usare l'API pubblica."
+        }
+      },
+      "coins": {
+        "title": "Criptovalute",
+        "description": "Scegli le criptovalute da seguire, oppure scrivi il loro ID CoinGecko (es. `bitcoin`) o il simbolo (es. `btc`).",
+        "data": {
+          "coins": "Criptovalute"
+        },
+        "data_description": {
+          "coins": "Sono elencate le 100 più grandi; le altre si possono scrivere."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Chiave CoinGecko rifiutata",
+        "description": "CoinGecko non accetta più la chiave API configurata. Inserisci una nuova chiave Demo, o lascia vuoto per l'API pubblica.",
+        "data": {
+          "api_key": "Chiave API Demo di CoinGecko"
+        }
+      }
+    },
+    "error": {
+      "invalid_api_key": "CoinGecko ha rifiutato questa chiave (sono supportate solo le chiavi Demo).",
+      "cannot_connect": "Impossibile contattare CoinGecko, oppure la valuta non è supportata.",
+      "unknown_coins": "Criptovalute sconosciute: {unknown}.",
+      "no_coins": "Scegli almeno una criptovaluta."
+    },
+    "abort": {
+      "already_configured": "Questa valuta è già configurata.",
+      "reauth_successful": "La chiave API è stata aggiornata."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Crypto Trend",
+        "data": {
+          "coins": "Criptovalute",
+          "scan_interval": "Intervallo di aggiornamento",
+          "api_key": "Chiave API Demo di CoinGecko"
+        },
+        "data_description": {
+          "coins": "Sono elencate le 100 più grandi; le altre si possono scrivere.",
+          "scan_interval": "Minuti tra un aggiornamento e l'altro. Senza chiave tienilo ad almeno 2.",
+          "api_key": "Facoltativa. Lascia vuoto per usare l'API pubblica."
+        }
+      }
+    },
+    "error": {
+      "invalid_api_key": "CoinGecko ha rifiutato questa chiave (sono supportate solo le chiavi Demo).",
+      "cannot_connect": "Impossibile contattare CoinGecko, oppure la valuta non è supportata.",
+      "unknown_coins": "Criptovalute sconosciute: {unknown}.",
+      "no_coins": "Scegli almeno una criptovaluta."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "price": {
+        "name": "Prezzo"
+      },
+      "change_1h": {
+        "name": "Variazione 1h"
+      },
+      "change_24h": {
+        "name": "Variazione 24h"
+      },
+      "change_7d": {
+        "name": "Variazione 7g"
+      },
+      "change_30d": {
+        "name": "Variazione 30g"
+      },
+      "change_1y": {
+        "name": "Variazione 1 anno"
+      },
+      "trend": {
+        "name": "Andamento",
+        "state": {
+          "strong_up": "Forte rialzo",
+          "up": "In rialzo",
+          "stable": "Stabile",
+          "down": "In ribasso",
+          "strong_down": "Forte ribasso"
+        }
+      },
+      "high_24h": {
+        "name": "Massimo 24h"
+      },
+      "low_24h": {
+        "name": "Minimo 24h"
+      },
+      "ath_distance": {
+        "name": "Distanza dal massimo storico"
+      },
+      "market_cap": {
+        "name": "Capitalizzazione"
+      },
+      "volume_24h": {
+        "name": "Volume 24h"
+      },
+      "rank": {
+        "name": "Posizione per capitalizzazione"
+      }
+    }
+  }
+}

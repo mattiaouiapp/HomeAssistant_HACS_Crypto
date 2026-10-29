@@ -1,0 +1,196 @@
+# Crypto Trend dashboard for Home Assistant.
+#
+# Uses only built-in cards. To install: Settings -> Dashboards -> Add dashboard ->
+# New dashboard from scratch, open it, then menu (top right) -> Edit dashboard ->
+# menu -> Raw configuration editor, and replace everything with this file.
+#
+# The overview lists every coin of every currency by itself. The sections below are
+# for the default coins in EUR: for other coins or currencies replace "bitcoin" and
+# "eur" in the entity IDs (sensor.crypto_<coin id>_<currency>_<sensor>).
+
+title: Crypto
+views:
+  - title: Crypto
+    path: crypto
+    icon: mdi:bitcoin
+    type: sections
+    max_columns: 3
+    sections:
+      # ------------------------------------------------------------------ Overview
+      - type: grid
+        column_span: 3
+        cards:
+          - type: heading
+            heading: Crypto
+            icon: mdi:finance
+          - type: markdown
+            grid_options:
+              columns: full
+            content: |-
+              {% set prices = integration_entities('crypto_trend') | select('search', '_price$')
+                 | expand | rejectattr('state', 'in', ['unknown', 'unavailable'])
+                 | sort(attribute='attributes.coin_name') | list %}
+              {% set arrows = {'strong_up': '⏫', 'up': '🔼', 'stable': '⏺️', 'down': '🔽', 'strong_down': '⏬'} %}
+              {% macro pct(v) %}{% if v is number %}{{ '%+.2f' | format(v) }}%{% else %}-{% endif %}{% endmacro %}
+              {% if prices %}
+              | | Coin | Price | 1h | 24h | 7d | 30d |
+              |:-:|:--|--:|--:|--:|--:|--:|
+              {%- for s in prices %}{% set a = s.attributes %}
+              | <img src="{{ a.image }}" width="20"> | **{{ a.coin_name }}** {{ a.symbol }} {{ arrows.get(a.trend, '') }} | {{ s.state | float | round(2 if s.state | float >= 1 else 6) }} {{ a.unit_of_measurement }} | {{ pct(a.change_1h_pct) }} | {{ pct(a.change_24h_pct) }} | {{ pct(a.change_7d_pct) }} | {{ pct(a.change_30d_pct) }} |
+              {%- endfor %}
+              {% else %}
+              Waiting for CoinGecko.
+              {% endif %}
+      # ------------------------------------------------------------------ Bitcoin
+      - type: grid
+        cards:
+          - type: heading
+            heading: Bitcoin
+            icon: mdi:bitcoin
+          - type: tile
+            entity: sensor.crypto_bitcoin_eur_price
+            name: Price
+          - type: tile
+            entity: sensor.crypto_bitcoin_eur_trend
+            name: Trend
+          - type: glance
+            show_icon: false
+            entities:
+              - entity: sensor.crypto_bitcoin_eur_change_1h
+                name: 1h
+              - entity: sensor.crypto_bitcoin_eur_change_24h
+                name: 24h
+              - entity: sensor.crypto_bitcoin_eur_change_7d
+                name: 7d
+              - entity: sensor.crypto_bitcoin_eur_change_30d
+                name: 30d
+          - type: history-graph
+            title: Last 24 hours
+            hours_to_show: 24
+            entities:
+              - entity: sensor.crypto_bitcoin_eur_price
+                name: Price
+          - type: statistics-graph
+            title: Last 30 days
+            chart_type: line
+            period: day
+            days_to_show: 30
+            stat_types:
+              - mean
+              - min
+              - max
+            entities:
+              - entity: sensor.crypto_bitcoin_eur_price
+                name: Price
+          - type: entities
+            entities:
+              - entity: sensor.crypto_bitcoin_eur_high_24h
+                name: High 24h
+              - entity: sensor.crypto_bitcoin_eur_low_24h
+                name: Low 24h
+              - entity: sensor.crypto_bitcoin_eur_ath_distance
+                name: From all-time high
+              - entity: sensor.crypto_bitcoin_eur_market_cap
+                name: Market cap
+      # ------------------------------------------------------------------ Ethereum
+      - type: grid
+        cards:
+          - type: heading
+            heading: Ethereum
+            icon: mdi:ethereum
+          - type: tile
+            entity: sensor.crypto_ethereum_eur_price
+            name: Price
+          - type: tile
+            entity: sensor.crypto_ethereum_eur_trend
+            name: Trend
+          - type: glance
+            show_icon: false
+            entities:
+              - entity: sensor.crypto_ethereum_eur_change_1h
+                name: 1h
+              - entity: sensor.crypto_ethereum_eur_change_24h
+                name: 24h
+              - entity: sensor.crypto_ethereum_eur_change_7d
+                name: 7d
+              - entity: sensor.crypto_ethereum_eur_change_30d
+                name: 30d
+          - type: history-graph
+            title: Last 24 hours
+            hours_to_show: 24
+            entities:
+              - entity: sensor.crypto_ethereum_eur_price
+                name: Price
+          - type: statistics-graph
+            title: Last 30 days
+            chart_type: line
+            period: day
+            days_to_show: 30
+            stat_types:
+              - mean
+              - min
+              - max
+            entities:
+              - entity: sensor.crypto_ethereum_eur_price
+                name: Price
+          - type: entities
+            entities:
+              - entity: sensor.crypto_ethereum_eur_high_24h
+                name: High 24h
+              - entity: sensor.crypto_ethereum_eur_low_24h
+                name: Low 24h
+              - entity: sensor.crypto_ethereum_eur_ath_distance
+                name: From all-time high
+              - entity: sensor.crypto_ethereum_eur_market_cap
+                name: Market cap
+      # ------------------------------------------------------------------ Solana
+      - type: grid
+        cards:
+          - type: heading
+            heading: Solana
+            icon: mdi:alpha-s-circle
+          - type: tile
+            entity: sensor.crypto_solana_eur_price
+            name: Price
+          - type: tile
+            entity: sensor.crypto_solana_eur_trend
+            name: Trend
+          - type: glance
+            show_icon: false
+            entities:
+              - entity: sensor.crypto_solana_eur_change_1h
+                name: 1h
+              - entity: sensor.crypto_solana_eur_change_24h
+                name: 24h
+              - entity: sensor.crypto_solana_eur_change_7d
+                name: 7d
+              - entity: sensor.crypto_solana_eur_change_30d
+                name: 30d
+          - type: history-graph
+            title: Last 24 hours
+            hours_to_show: 24
+            entities:
+              - entity: sensor.crypto_solana_eur_price
+                name: Price
+          - type: statistics-graph
+            title: Last 30 days
+            chart_type: line
+            period: day
+            days_to_show: 30
+            stat_types:
+              - mean
+              - min
+              - max
+            entities:
+              - entity: sensor.crypto_solana_eur_price
+                name: Price
+          - type: entities
+            entities:
+              - entity: sensor.crypto_solana_eur_high_24h
+                name: High 24h
+              - entity: sensor.crypto_solana_eur_low_24h
+                name: Low 24h
+              - entity: sensor.crypto_solana_eur_ath_distance
+                name: From all-time high
+              - entity: sensor.crypto_solana_eur_market_cap
+                name: Market cap

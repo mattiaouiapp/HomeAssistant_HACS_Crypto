@@ -1,0 +1,14 @@
+{
+    "domain": "crypto_trend",
+    "name": "Crypto Trend",
+    "codeowners": [
+        "@mattiaouiapp"
+    ],
+    "config_flow": true,
+    "documentation": "https://github.com/mattiaouiapp/HomeAssistant_HACS_Crypto",
+    "integration_type": "service",
+    "iot_class": "cloud_polling",
+    "issue_tracker": "https://github.com/mattiaouiapp/HomeAssistant_HACS_Crypto/issues",
+    "requirements": [],
+    "version": "1.0.0"
+}
